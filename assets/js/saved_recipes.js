@@ -1,27 +1,14 @@
-/**
- * @license MIT
- * @copyright 2023 codewithsadee
- * @author codewithsadee <mohammadsadee24@gmail.com>
- */
-
-"use strict";
-
-
-/**
- * Import
- */
-
 import { getTime } from "./module.js";
 
 
-const /** {Array} */ savedRecipes = Object.keys(window.localStorage).filter(item => {
+const savedRecipes = Object.keys(window.localStorage).filter(item => {
   return item.startsWith("cookio-recipe");
 });
 
-const /** {NodeElement} */ $savedRecipeContainer = document.querySelector("[data-saved-recipe-container]");
+const $savedRecipeContainer = document.querySelector("[data-saved-recipe-container]");
 
 $savedRecipeContainer.innerHTML = `<h2 class="headline-small section-title">All Saved Recipes</h2>`;
-const /** {NodeElement} */ $gridList = document.createElement("div");
+const $gridList = document.createElement("div");
 $gridList.classList.add("grid-list");
 
 if (savedRecipes.length) {
@@ -36,10 +23,10 @@ if (savedRecipes.length) {
       }
     } = JSON.parse(window.localStorage.getItem(savedRecipe));
 
-    const /** {String} */ recipeId = uri.slice(uri.lastIndexOf("_") + 1);
-    const /** {undefined || String} */ isSaved = window.localStorage.getItem(`cookio-recipe${recipeId}`);
+    const recipeId = uri.slice(uri.lastIndexOf("_") + 1);
+    const isSaved = window.localStorage.getItem(`cookio-recipe${recipeId}`);
 
-    const /** {NodeElement} */ $card = document.createElement("div");
+    const $card = document.createElement("div");
     $card.classList.add("card");
     $card.style.animationDelay = `${100 * index}ms`;
 

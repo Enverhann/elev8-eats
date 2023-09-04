@@ -1,15 +1,9 @@
-/**
- * @license MIT
- * @copyright 2023 codewithsadee
- * @author codewithsadee <mohammadsadee24@gmail.com>
- */
-
 "use strict";
 
 import { fetchData } from "./api.js";
 
 /**
- * Add event on multiple elements
+ * Eevent on elkements
  * @param {NodeList} $elements NodeList
  * @param {String} eventType Event type string
  * @param {Function} callback Callback function
@@ -22,7 +16,7 @@ window.addEventOnElements = ($elements, eventType, callback) => {
 }
 
 
-export const /** {Array} */ cardQueries = [
+export const cardQueries = [
   ["field", "uri"],
   ["field", "label"],
   ["field", "image"],
@@ -30,10 +24,7 @@ export const /** {Array} */ cardQueries = [
 ];
 
 
-/**
- * Skeleton card
- */
-
+// Skeleton
 export const /** {String} */ $skeletonCard = `
   <div class="card skeleton-card">
 
@@ -49,10 +40,10 @@ export const /** {String} */ $skeletonCard = `
 `;
 
 
-const /** {String} */ ROOT = "https://api.edamam.com/api/recipes/v2";
+const ROOT = "https://api.edamam.com/api/recipes/v2";
 
 window.saveRecipe = function (element, recipeId) {
-  const /** {String} */ isSaved = window.localStorage.getItem(`cookio-recipe${recipeId}`);
+  const isSaved = window.localStorage.getItem(`cookio-recipe${recipeId}`);
   ACCESS_POINT = `${ROOT}/${recipeId}`;
 
   if (!isSaved) {
@@ -72,12 +63,12 @@ window.saveRecipe = function (element, recipeId) {
 }
 
 
-const /** {NodeElement} */ $snackbarContainer = document.createElement("div");
+const $snackbarContainer = document.createElement("div");
 $snackbarContainer.classList.add("snackbar-container");
 document.body.appendChild($snackbarContainer);
 
 function showNotification(message) {
-  const /** {NodeElement} */ $snackbar = document.createElement("div");
+  const $snackbar = document.createElement("div");
   $snackbar.classList.add("snackbar");
   $snackbar.innerHTML = `<p class="body-medium">${message}</p>`;
   $snackbarContainer.appendChild($snackbar);

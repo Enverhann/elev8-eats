@@ -1,57 +1,38 @@
-/**
- * @license MIT
- * @copyright 2023 codewithsadee
- * @author codewithsadee <mohammadsadee24@gmail.com>
- */
-
 "use strict";
-
-
-/**
- * Import
- */
 
 import { fetchData } from "./api.js";
 import { $skeletonCard, cardQueries } from "./global.js";
 import { getTime } from "./module.js";
 
 
-/**
- * Home page Search
- */
 
-const /** {NodeElement} */ $searchField = document.querySelector("[data-search-field]");
-const /** {NodeElement} */ $searchBtn = document.querySelector("[data-search-btn]");
+// Search bar 
+const $searchField = document.querySelector("[data-search-field]");
+const $searchBtn = document.querySelector("[data-search-btn]");
 
 $searchBtn.addEventListener("click", function () {
   if ($searchField.value) window.location = `/recipes.html?q=${$searchField.value}`;
 });
 
-/**
- * Search submit when press "Enter" key
- */
-
+// Search with Enter key 
 $searchField.addEventListener("keydown", e => {
   if (e.key === "Enter") $searchBtn.click();
 });
 
 
-/**
- * Tab panel navigation
- */
+// Tab panel 
+const $tabBtns = document.querySelectorAll("[data-tab-btn]");
+const $tabPanels = document.querySelectorAll("[data-tab-panel]");
 
-const /** {NodeList} */ $tabBtns = document.querySelectorAll("[data-tab-btn]");
-const /** {NodeList} */ $tabPanels = document.querySelectorAll("[data-tab-panel]");
-
-let /** {NodeElement} */[$lastActiveTabPanel] = $tabPanels;
-let /** {NodeElement} */[$lastActiveTabBtn] = $tabBtns;
+let [$lastActiveTabPanel] = $tabPanels;
+let [$lastActiveTabBtn] = $tabBtns;
 
 addEventOnElements($tabBtns, "click", function () {
   $lastActiveTabPanel.setAttribute("hidden", "");
   $lastActiveTabBtn.setAttribute("aria-selected", false);
   $lastActiveTabBtn.setAttribute("tabindex", -1);
 
-  const /** {NodeElement} */ $currentTabPanel = document.querySelector(`#${this.getAttribute("aria-controls")}`);
+  const $currentTabPanel = document.querySelector(`#${this.getAttribute("aria-controls")}`);
   $currentTabPanel.removeAttribute("hidden");
   this.setAttribute("aria-selected", true);
   this.setAttribute("tabindex", 0);
@@ -62,14 +43,11 @@ addEventOnElements($tabBtns, "click", function () {
   addTabContent(this, $currentTabPanel);
 });
 
-/**
- * Navigate Tab with arrow key
- */
-
+// Navigate with arrow keys
 addEventOnElements($tabBtns, "keydown", function (e) {
 
-  const /** {NodeElement} */ $nextElement = this.nextElementSibling;
-  const /** {NodeElement} */ $previousElement = this.previousElementSibling;
+  const $nextElement = this.nextElementSibling;
+  const $previousElement = this.previousElementSibling;
 
   if (e.key === "ArrowRight" && $nextElement) {
     this.setAttribute("tabindex", -1);
@@ -87,14 +65,10 @@ addEventOnElements($tabBtns, "keydown", function (e) {
 });
 
 
-/**
- * WORK WITH API
- * fetch data for tab content
- */
-
+// Fetch API
 const addTabContent = ($currentTabBtn, $currentTabPanel) => {
 
-  const /** {NodeElement} */ $gridList = document.createElement("div");
+  const $gridList = document.createElement("div");
   $gridList.classList.add("grid-list");
 
   $currentTabPanel.innerHTML = `
@@ -118,10 +92,10 @@ const addTabContent = ($currentTabBtn, $currentTabPanel) => {
         }
       } = data.hits[i];
 
-      const /** {String} */ recipeId = uri.slice(uri.lastIndexOf("_") + 1);
-      const /** {undefined || String} */ isSaved = window.localStorage.getItem(`cookio-recipe${recipeId}`);
+      const recipeId = uri.slice(uri.lastIndexOf("_") + 1);
+      const isSaved = window.localStorage.getItem(`cookio-recipe${recipeId}`);
 
-      const /** {NodeElement} */ $card = document.createElement("div");
+      const $card = document.createElement("div");
       $card.classList.add("card");
       $card.style.animationDelay = `${100 * i}ms`;
 
@@ -173,13 +147,10 @@ const addTabContent = ($currentTabBtn, $currentTabPanel) => {
 addTabContent($lastActiveTabBtn, $lastActiveTabPanel);
 
 
-/**
- * Fetch data for slider card
- */
+// Fetch
+let cuisineType = ["Asian", "French"];
 
-let /** {Array} */ cuisineType = ["Asian", "French"];
-
-const /** {NodeList} */ $sliderSections = document.querySelectorAll("[data-slider-section]");
+const $sliderSections = document.querySelectorAll("[data-slider-section]");
 
 for (const [index, $sliderSection] of $sliderSections.entries()) {
 
@@ -195,7 +166,7 @@ for (const [index, $sliderSection] of $sliderSections.entries()) {
     </div>
   `;
 
-  const /** {NodeElement} */ $sliderWrapper = $sliderSection.querySelector("[data-slider-wrapper]");
+  const $sliderWrapper = $sliderSection.querySelector("[data-slider-wrapper]");
 
   fetchData([...cardQueries, ["cuisineType", cuisineType[index]]], function (data) {
 
@@ -212,10 +183,10 @@ for (const [index, $sliderSection] of $sliderSections.entries()) {
         }
       } = item;
 
-      const /** {String} */ recipeId = uri.slice(uri.lastIndexOf("_") + 1);
-      const /** {undefined || String} */ isSaved = window.localStorage.getItem(`cookio-recipe${recipeId}`);
+      const recipeId = uri.slice(uri.lastIndexOf("_") + 1);
+      const isSaved = window.localStorage.getItem(`cookio-recipe${recipeId}`);
 
-      const /** {NodeElement} */ $sliderItem = document.createElement("li");
+      const $sliderItem = document.createElement("li");
       $sliderItem.classList.add("slider-item");
 
       $sliderItem.innerHTML = `

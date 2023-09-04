@@ -1,26 +1,12 @@
-/**
- * @license MIT
- * @copyright 2023 codewithsadee
- * @author codewithsadee <mohammadsadee24@gmail.com>
- */
-
 "use strict";
-
-
-/**
- * Import
- */
 
 import { fetchData } from "./api.js";
 import { $skeletonCard, cardQueries } from "./global.js";
 import { getTime } from "./module.js";
 
 
-/**
- * Accordion
- */
-
-const /** {NodeList} */ $accordions = document.querySelectorAll("[data-accordion]");
+// Accordion data
+const $accordions = document.querySelectorAll("[data-accordion]");
 
 /**
  * @param {NodeList} $element Accordion node
@@ -28,7 +14,7 @@ const /** {NodeList} */ $accordions = document.querySelectorAll("[data-accordion
 
 const initAccordion = function ($element) {
 
-  const /** {NodeElement} */ $button = $element.querySelector("[data-accordion-btn]");
+  const $button = $element.querySelector("[data-accordion-btn]");
   let isExpanded = false;
 
   $button.addEventListener("click", function () {
@@ -41,13 +27,10 @@ const initAccordion = function ($element) {
 for (const $accordion of $accordions) initAccordion($accordion);
 
 
-/**
- * Filter bar toggle for mobile screen
- */
-
-const /** {NodeElement} */ $filterBar = document.querySelector("[data-filter-bar]");
-const /** {NodeList} */ $filterTogglers = document.querySelectorAll("[data-filter-toggler]");
-const /** {NodeElement} */ $overlay = document.querySelector("[data-overlay]");
+// Filter mobile 
+const $filterBar = document.querySelector("[data-filter-bar]");
+const $filterTogglers = document.querySelectorAll("[data-filter-toggler]");
+const $overlay = document.querySelector("[data-overlay]");
 
 addEventOnElements($filterTogglers, "click", function () {
   $filterBar.classList.toggle("active");
@@ -57,25 +40,22 @@ addEventOnElements($filterTogglers, "click", function () {
 });
 
 
-/**
- * Filter submit and clear
- */
-
-const /** {NodeElement} */ $filterSubmit = document.querySelector("[data-filter-submit]");
-const /** {NodeElement} */ $filterClear = document.querySelector("[data-filter-clear]");
-const /** {NodeElement} */ $filterSearch = $filterBar.querySelector("input[type='search']");
+// Filter clear, submit
+const $filterSubmit = document.querySelector("[data-filter-submit]");
+const $filterClear = document.querySelector("[data-filter-clear]");
+const $filterSearch = $filterBar.querySelector("input[type='search']");
 
 $filterSubmit.addEventListener("click", function () {
 
-  const /** {NodeList} */ $filterCheckboxes = $filterBar.querySelectorAll("input:checked");
+  const $filterCheckboxes = $filterBar.querySelectorAll("input:checked");
 
-  const /** {Array} */ queries = [];
+  const queries = [];
 
   if ($filterSearch.value) queries.push(["q", $filterSearch.value]);
 
   if ($filterCheckboxes.length) {
     for (const $checkbox of $filterCheckboxes) {
-      const /** {String} */ key = $checkbox.parentElement.parentElement.dataset.filter;
+      const key = $checkbox.parentElement.parentElement.dataset.filter;
       queries.push([key, $checkbox.value]);
     }
   }
@@ -90,7 +70,7 @@ $filterSearch.addEventListener("keydown", e => {
 
 $filterClear.addEventListener("click", function () {
 
-  const /** {NodeList} */ $filterCheckboxes = $filterBar.querySelectorAll("input:checked");
+  const $filterCheckboxes = $filterBar.querySelectorAll("input:checked");
 
   $filterCheckboxes?.forEach(elem => elem.checked = false);
   $filterSearch.value &&= "";
@@ -98,10 +78,10 @@ $filterClear.addEventListener("click", function () {
 });
 
 
-const /** {String} */ queryStr = window.location.search.slice(1);
-const /** {Array} */ queries = queryStr && queryStr.split("&").map(i => i.split("="));
+const queryStr = window.location.search.slice(1);
+const queries = queryStr && queryStr.split("&").map(i => i.split("="));
 
-const /** {NodeElement} */ $filterCount = document.querySelector("[data-filter-count]");
+const $filterCount = document.querySelector("[data-filter-count]");
 
 if (queries.length) {
   $filterCount.style.display = "block";
@@ -118,20 +98,17 @@ queryStr && queryStr.split("&").map(i => {
   }
 });
 
-const /** {NodeElement} */ $filterBtn = document.querySelector("[data-filter-btn]");
+const $filterBtn = document.querySelector("[data-filter-btn]");
 
 window.addEventListener("scroll", e => {
   $filterBtn.classList[window.scrollY >= 120 ? "add" : "remove"]("active");
 });
 
 
-/**
- * Request recipes and render
- */
-
-const /** {NodeElement} */ $gridList = document.querySelector("[data-grid-list]");
-const /** {NodeElement} */ $loadMore = document.querySelector("[data-load-more]");
-const /** {Array} */ defaultQueries = [
+// Render recipes
+const $gridList = document.querySelector("[data-grid-list]");
+const $loadMore = document.querySelector("[data-load-more]");
+const defaultQueries = [
   ["mealType", "breakfast"],
   ["mealType", "dinner"],
   ["mealType", "lunch"],
@@ -141,7 +118,7 @@ const /** {Array} */ defaultQueries = [
 ];
 
 $gridList.innerHTML = $skeletonCard.repeat(20);
-let /** {String} */ nextPageUrl = "";
+let nextPageUrl = "";
 
 const renderRecipe = data => {
 
@@ -156,10 +133,10 @@ const renderRecipe = data => {
       }
     } = item;
 
-    const /** {String} */ recipeId = uri.slice(uri.lastIndexOf("_") + 1);
-    const /** {undefined || String} */ isSaved = window.localStorage.getItem(`cookio-recipe${recipeId}`);
+    const recipeId = uri.slice(uri.lastIndexOf("_") + 1);
+    const isSaved = window.localStorage.getItem(`cookio-recipe${recipeId}`);
 
-    const /** {NodeElement} */ $card = document.createElement("div");
+    const $card = document.createElement("div");
     $card.classList.add("card");
     $card.style.animationDelay = `${100 * index}ms`;
 
@@ -201,7 +178,7 @@ const renderRecipe = data => {
 }
 
 
-let /** {Boolean} */ requestedBefore = true;
+let requestedBefore = true;
 
 fetchData(queries || defaultQueries, data => {
 
@@ -220,8 +197,8 @@ fetchData(queries || defaultQueries, data => {
 });
 
 
-const /** {Number} */ CONTAINER_MAX_WIDTH = 1200;
-const /** {Number} */ CONTAINER_MAX_CARD = 6;
+const CONTAINER_MAX_WIDTH = 1200;
+const CONTAINER_MAX_CARD = 6;
 
 window.addEventListener("scroll", async e => {
 
@@ -230,8 +207,8 @@ window.addEventListener("scroll", async e => {
     $loadMore.innerHTML = $skeletonCard.repeat(Math.round(($loadMore.clientWidth / (CONTAINER_MAX_WIDTH)) * CONTAINER_MAX_CARD));
     requestedBefore = true;
 
-    const /** {Promise} */ response = await fetch(nextPageUrl);
-    const /** {Object} */ data = await response.json();
+    const response = await fetch(nextPageUrl);
+    const data = await response.json();
 
     const { _links: { next } } = data;
     nextPageUrl = next?.href;
