@@ -551,6 +551,7 @@ main {
 .btn-primary {
   background-color: var(--primary);
   color: var(--white);
+  margin-right: 65px;
 }
 
 .btn-primary:where(:hover, :focus-visible):not(:active) {
