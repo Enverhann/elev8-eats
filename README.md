@@ -22,15 +22,19 @@ This project made for elev8 advanced web fundamentals training. This is a simple
 # Enverhan's Epic Eats
 
 Search Bar:
+
 Description: Users can enter keywords or ingredients to quickly find recipes that match their preferences. 
 
 Filter by Category:
+
 Description: Meal type (e.g., breakfast, dinner) or preparation time. Additionally world cuisines added.
  
 Responsive UI
+
 Description: With this design when you are on your mobile phone you can see project's design changes significantly compare to accessing from computer. Whole UI including nav bar and hero banner in index html changes for better user consumption.
 
 Save to Favorites:
+
 Description: Allow users to create an account or use cookies to save their favorite recipes to a "Favorites" section. 
 
 Live Server :https://enverhans-epic-eats.netlify.app
