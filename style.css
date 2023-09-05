@@ -734,7 +734,10 @@ main {
   border-block-end: 1px solid var(--outline);
   z-index: 4;
 }
-
+.header p,
+.footer p{
+  font-size: var(--fs-title-medium);
+}
 .theme-switch {
   margin-inline-start: auto;
   margin-right: 40px;
