@@ -41,8 +41,8 @@
   --dark-alpha-20: hsla(0, 0%, 100%, 0.2);
 
   /* Fonts */
-  --font-primary: 'DM Serif Display', serif;
-  --font-secondary: 'DM Sans', sans-serif;
+  --font-primary: 'Times New Roman', serif;
+  --font-secondary: 'Verdana', sans-serif;
 
   /* Font size */
   --fs-base: 62.5%;
