@@ -19,7 +19,7 @@ This project made for elev8 advanced web fundamentals training. This is a simple
 7)saved-recipes.html: This page holds all saved recipes by the user.
 
 
-# Enverhan's Epic Eats
+# Features
 
 Search Bar
 
