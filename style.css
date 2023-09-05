@@ -737,6 +737,7 @@ main {
 
 .theme-switch {
   margin-inline-start: auto;
+  margin-right: 40px;
 }
 
 [data-theme="light"] :where(.logo-dark, .theme-switch .light-icon),

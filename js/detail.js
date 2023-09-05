@@ -3,7 +3,6 @@
 import { fetchData } from "./api.js";
 import { getTime } from "./module.js";
 
-
 // Initialize data
 const $detailContainer = document.querySelector("[data-detail-container]");
 

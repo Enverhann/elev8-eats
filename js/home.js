@@ -5,7 +5,6 @@ import { $skeletonCard, cardQueries } from "./global.js";
 import { getTime } from "./module.js";
 
 
-
 // Search bar 
 const $searchField = document.querySelector("[data-search-field]");
 const $searchBtn = document.querySelector("[data-search-btn]");

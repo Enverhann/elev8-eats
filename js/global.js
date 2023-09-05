@@ -3,7 +3,7 @@
 import { fetchData } from "./api.js";
 
 /**
- * Eevent on elkements
+ * Eevent on elements
  * @param {NodeList} $elements NodeList
  * @param {String} eventType Event type string
  * @param {Function} callback Callback function
@@ -25,7 +25,7 @@ export const cardQueries = [
 
 
 // Skeleton
-export const /** {String} */ $skeletonCard = `
+export const $skeletonCard = `
   <div class="card skeleton-card">
 
     <div class="skeleton card-banner"></div>
