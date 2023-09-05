@@ -6,8 +6,8 @@
 
   /* Light theme */
   --light-background: hsl(0, 8%, 83%);
-  --light-on-background: hsl(0, 0%, 47%);
-  --light-on-background-variant: hsl(0, 0%, 37%);
+  --light-on-background: hsl(0, 0%, 31%);
+  --light-on-background-variant: hsl(0, 0%, 26%);
   --light-primary: hsl(256, 95%, 46%);
   --light-primary-hover: hsl(242, 60%, 62%);
   --light-primary-container: hsl(14, 57%, 95%);
