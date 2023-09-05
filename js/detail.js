@@ -78,9 +78,6 @@ fetchData(null, data => {
 
           <span class="material-symbols-outlined bookmark" aria-hidden="true">bookmark</span>
 
-          <span class="material-symbols-outlined" aria-hidden="true">star</span>
-          <span class="label-medium">4.5</span>
-          
           <span class="label-large save-text">Save</span>
           <span class="label-large unsaved-text">Unsaved</span>
 

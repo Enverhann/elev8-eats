@@ -1610,19 +1610,4 @@ main {
   .slider-item {
     min-width: calc(16.66% - 6.66px);
   }
-
-}
-.meta-item:last-child .material-symbols-outlined {
-  font-size: 24px; /* Adjust the size as needed */
-  color: #f7c100; /* Color for filled stars */
-  transition: color 0.3s; /* Smooth transition for color change */
-  cursor: pointer; /* Change cursor to pointer for interaction */
-}
-
-/* Style for the user rating value */
-.user-rating-value {
-  font-size: 18px; /* Adjust the size as needed */
-  margin-left: 8px; /* Add some spacing between stars and the rating value */
-  font-weight: bold; /* Make the rating value bold */
-  color: #333; /* Default color for the rating value */
 }

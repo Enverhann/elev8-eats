@@ -1,19 +1,6 @@
 import { getTime } from "./module.js";
 
 
-// Function to get user rating from local storage
-function getUserRating(recipeId) {
-  const userRatingKey = `user-rating-${recipeId}`;
-  return parseFloat(localStorage.getItem(userRatingKey)) || 0;
-}
-
-// Function to update and display user rating
-function updateUserRating(recipeId, rating) {
-  const userRatingKey = `user-rating-${recipeId}`;
-  localStorage.setItem(userRatingKey, rating);
-}
-
-
 const savedRecipes = Object.keys(window.localStorage).filter(item => {
   return item.startsWith("cookio-recipe");
 });
@@ -74,31 +61,11 @@ if (savedRecipes.length) {
       </div>
     `;
 
-    // Add event listeners for star rating
-    const starIcons = $card.querySelectorAll(".meta-item:last-child .material-symbols-outlined");
-    starIcons.forEach((star, starIndex) => {
-      star.addEventListener("click", () => {
-        const newRating = starIndex + 1; // Rating is 1 to 5
-        updateUserRating(recipeId, newRating);
-        updateStarRating(userRating.toFixed(1), newRating);
-      });
-    });
-
     $gridList.appendChild($card);
 
   });
 } else {
-  $savedRecipeContainer.innerHTML += `<p class="body-large">You haven't saved any recipes yet!</p>`;
+  $savedRecipeContainer.innerHTML += `<p class="body-large">You don't saved any recipes yet!</p>`;
 }
 
 $savedRecipeContainer.appendChild($gridList);
-
-// Function to update star rating display
-function updateStarRating(oldRating, newRating) {
-  const userRatingValues = document.querySelectorAll(".user-rating-value");
-  userRatingValues.forEach(userRatingValue => {
-    if (oldRating !== newRating) {
-      userRatingValue.textContent = newRating;
-    }
-  });
-}
