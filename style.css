@@ -6,8 +6,8 @@
 
   /* Light theme */
   --light-background: hsl(0, 8%, 83%);
-  --light-on-background: hsl(0, 3%, 13%);
-  --light-on-background-variant: hsl(20, 3%, 19%);
+  --light-on-background: hsl(0, 0%, 47%);
+  --light-on-background-variant: hsl(0, 0%, 37%);
   --light-primary: hsl(256, 95%, 46%);
   --light-primary-hover: hsl(242, 60%, 62%);
   --light-primary-container: hsl(14, 57%, 95%);
@@ -24,8 +24,8 @@
 
   /* Dark theme */
   --dark-background: hsl(0, 1%, 19%);
-  --dark-on-background: hsl(11, 3%, 87%);
-  --dark-on-background-variant: hsl(11, 3%, 81%);
+  --dark-on-background: hsl(0, 8%, 92%);
+  --dark-on-background-variant: hsl(0, 8%, 93%);
   --dark-primary: hsl(256, 95%, 46%);
   --dark-primary-hover: hsl(242, 60%, 62%);
   --dark-primary-container: hsl(15, 3%, 15%);
