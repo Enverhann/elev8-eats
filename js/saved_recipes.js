@@ -2,7 +2,7 @@ import { getTime } from "./module.js";
 
 
 const savedRecipes = Object.keys(window.localStorage).filter(item => {
-  return item.startsWith("cookio-recipe");
+  return item.startsWith("enverhan-recipe");
 });
 
 const $savedRecipeContainer = document.querySelector("[data-saved-recipe-container]");
@@ -24,7 +24,7 @@ if (savedRecipes.length) {
     } = JSON.parse(window.localStorage.getItem(savedRecipe));
 
     const recipeId = uri.slice(uri.lastIndexOf("_") + 1);
-    const isSaved = window.localStorage.getItem(`cookio-recipe${recipeId}`);
+    const isSaved = window.localStorage.getItem(`enverhan-recipe${recipeId}`);
 
     const $card = document.createElement("div");
     $card.classList.add("card");

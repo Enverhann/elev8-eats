@@ -134,7 +134,7 @@ const renderRecipe = data => {
     } = item;
 
     const recipeId = uri.slice(uri.lastIndexOf("_") + 1);
-    const isSaved = window.localStorage.getItem(`cookio-recipe${recipeId}`);
+    const isSaved = window.localStorage.getItem(`enverhan-recipe${recipeId}`);
 
     const $card = document.createElement("div");
     $card.classList.add("card");

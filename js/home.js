@@ -92,7 +92,7 @@ const addTabContent = ($currentTabBtn, $currentTabPanel) => {
       } = data.hits[i];
 
       const recipeId = uri.slice(uri.lastIndexOf("_") + 1);
-      const isSaved = window.localStorage.getItem(`cookio-recipe${recipeId}`);
+      const isSaved = window.localStorage.getItem(`enverhan-recipe${recipeId}`);
 
       const $card = document.createElement("div");
       $card.classList.add("card");
@@ -183,7 +183,7 @@ for (const [index, $sliderSection] of $sliderSections.entries()) {
       } = item;
 
       const recipeId = uri.slice(uri.lastIndexOf("_") + 1);
-      const isSaved = window.localStorage.getItem(`cookio-recipe${recipeId}`);
+      const isSaved = window.localStorage.getItem(`enverhan-recipe${recipeId}`);
 
       const $sliderItem = document.createElement("li");
       $sliderItem.classList.add("slider-item");

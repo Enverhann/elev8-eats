@@ -35,7 +35,7 @@ fetchData(null, data => {
   let ingredientItems = "";
 
   const recipeId = uri.slice(uri.lastIndexOf("_") + 1);
-  const isSaved = window.localStorage.getItem(`cookio-recipe${recipeId}`);
+  const isSaved = window.localStorage.getItem(`enverhan-recipe${recipeId}`);
 
   tags.map(tag => {
 
